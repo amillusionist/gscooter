@@ -5,6 +5,19 @@ allprojects {
     }
 }
 
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Ensure these are up to date
+        classpath 'com.android.tools.build:gradle:8.7.2' // Check for the latest version
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.20-Beta1" // Match Kotlin version
+    }
+}
+
+
 rootProject.buildDir = "../build"
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
