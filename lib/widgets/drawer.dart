@@ -526,13 +526,34 @@ class _DrawerContentState extends State<DrawerContent> {
     return commandByte;
   }
 
+  int stopCommandByte() {
+    List<bool> bits = [
+      false, //power on
+      false, //light blink
+      false, //light on
+      false,
+      kph,
+      fastAcceleration,
+      false,
+      false
+    ];
+    int commandByte = 0;
+    for (int i = 0; i < bits.length; i++) {
+      if (bits[i]) {
+        commandByte |= 1 << i;
+      }
+    }
+    return commandByte;
+  }
+
   int startCommand(
       bool fastAcceleration, bool kph, bool lightOn, bool lightBlink) {
     return genCommandByte(fastAcceleration, kph, lightOn, lightBlink, true);
   }
 
   int stopCommand(bool lightBlink) {
-    return genCommandByte(false, true, false, lightBlink, false);
+    return stopCommandByte();
+    // genCommandByte(false, true, false, lightBlink, false);
   }
 
   String calculateCrc8Maxim(Uint8List data) {
@@ -677,7 +698,8 @@ class _DrawerContentState extends State<DrawerContent> {
                                   icon: Icon(Icons.stop),
                                   onPressed: () {
                                     int commandByte = stopCommand(lightBlink);
-                                    sendCommand(characteristic, commandByte, 0);
+                                    sendCommand(
+                                        characteristic, commandByte, 20);
                                   },
                                 ),
                             ],
