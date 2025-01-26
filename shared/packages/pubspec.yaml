@@ -13,6 +13,9 @@ dependencies:
     sdk: flutter
   cupertino_icons:
   flutter_blue_plus: ^1.35.2
+  # shared_preferences:
+  # crc: ^0.0.2
+  crclib: ^3.0.0 # google official package or yx_tool: ^0.1.2 =>io
 
 dev_dependencies:
   flutter_test:

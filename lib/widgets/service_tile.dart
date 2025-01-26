@@ -12,6 +12,7 @@ class ServiceTile extends StatelessWidget {
 
   Widget buildUuid(BuildContext context) {
     String uuid = '0x${service.uuid.str.toUpperCase()}';
+    String longuuid = '0x${service.serviceUuid.str}';
     return Text(uuid, style: TextStyle(fontSize: 13));
   }
 

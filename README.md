@@ -1,5 +1,7 @@
 # G-Scooter
 
+> TODO: IOS Part remains
+
 G-Scooter is a Flutter project designed to showcase Bluetooth connectivity within a Flutter application. This project demonstrates how to integrate and use Bluetooth features to connect and interact with Bluetooth-enabled devices.
 
 ## Features

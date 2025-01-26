@@ -55,7 +55,12 @@ class _ScanScreenState extends State<ScanScreen> {
   Future onScanPressed() async {
     try {
       // `withServices` is required on iOS for privacy purposes, ignored on android.
-      var withServices = [Guid("180f")]; // Battery Level Service
+      var withServices = [
+        Guid("1800"),
+        Guid("1801"),
+        Guid("2C00"),
+        Guid("FE59"),
+      ]; // Battery Level Service
       _systemDevices = await FlutterBluePlus.systemDevices(withServices);
     } catch (e) {
       Snackbar.show(ABC.b, prettyException("System Devices Error:", e),
@@ -120,8 +125,7 @@ class _ScanScreenState extends State<ScanScreen> {
       );
     } else {
       return FloatingActionButton(
-          onPressed: onScanPressed,
-          child: const Text("SCAN"));
+          onPressed: onScanPressed, child: const Text("SCAN"));
     }
   }
 

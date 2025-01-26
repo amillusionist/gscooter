@@ -40,7 +40,8 @@ class _DescriptorTileState extends State<DescriptorTile> {
 
   BluetoothDescriptor get d => widget.descriptor;
 
-  List<int> _getRandomBytes() {
+  List<int> _getRandomBytes() { // TODO: Get the Code to Make it Turn Off and On =>I wish To turn the scooter ON: [0x01, 0x00]
+// To turn the scooter OFF: [0x02, 0x00]
     final math = Random();
     return [
       math.nextInt(255),
