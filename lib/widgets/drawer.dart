@@ -526,6 +526,27 @@ class _DrawerContentState extends State<DrawerContent> {
     return commandByte;
   }
 
+  int startCommandByte() {
+    List<bool> bits = [
+      true, // powerOn
+      true, // lightBlink
+      true, // lightOn
+      true, // (previously false)
+      true, // kph
+      true, // fastAcceleration
+      true, // (previously false)
+      true // (previously false)
+    ];
+    int commandByte = 0;
+    for (int i = 0; i < bits.length; i++) {
+      if (bits[i]) {
+        commandByte |= 1 << i;
+      }
+    }
+
+    return commandByte;
+  }
+
   int stopCommandByte() {
     List<bool> bits = [
       false, //power on
@@ -548,7 +569,8 @@ class _DrawerContentState extends State<DrawerContent> {
 
   int startCommand(
       bool fastAcceleration, bool kph, bool lightOn, bool lightBlink) {
-    return genCommandByte(fastAcceleration, kph, lightOn, lightBlink, true);
+    return startCommandByte();
+    //genCommandByte(fastAcceleration, kph, lightOn, lightBlink, true);
   }
 
   int stopCommand(bool lightBlink) {
